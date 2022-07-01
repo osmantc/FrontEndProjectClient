@@ -1,15 +1,129 @@
 <div class="container">
-  <h1 class="bg-danger text-white">Merhabalar</h1>
-  <div class="row mt-2">
-    <button class="btn btn-danger"> Deneme </button>
-  </div>
-  <div class="row mt-2">
-    <dx-button>Test</dx-button>
-  </div>
-  <div class="row mt-5">
-    <dx-button [disabled]="true" text="HAHAHA"></dx-button>
+  <div class="row">
+    <div class="col">
+
+      <dx-data-grid [dataSource]="dataSource" [remoteOperations]="true" [height]="600" [showBorders]="true">
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxo-header-filter [visible]="true"></dxo-header-filter>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-scrolling mode="virtual"></dxo-scrolling>
+        <dxo-editing mode="row" [allowAdding]="true" [allowUpdating]="true" [allowDeleting]="true">
+        </dxo-editing>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+        <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
+        <dxi-column dataField="id" caption="id">
+          <!-- <dxi-validation-rule
+          type="stringLength"
+          [max]="15"
+          message="The field id must be a string with a maximum length of 15."
+        ></dxi-validation-rule> -->
+        </dxi-column>
+        <dxi-column dataField="tenant_id" dataType="number">
+          <!-- <dxi-validation-rule
+          type="required"
+          message="The OrderDate field is required."
+        ></dxi-validation-rule> -->
+        </dxi-column>
+        <dxi-column dataField="report_file_process_id">
+          <dxo-header-filter groupInterval="100"></dxo-header-filter>
+          <!-- <dxi-validation-rule
+          type="range"
+          [min]="0"
+          [max]="2000"
+          message="The field Freight must be between 0 and 2000."
+        >
+        </dxi-validation-rule> -->
+        </dxi-column>
+        <dxi-column dataField="location">
+          <!-- <dxi-validation-rule
+          type="stringLength"
+          max="15"
+          message="The field ShipCountry must be a string with a maximum length of 15."
+        ></dxi-validation-rule> -->
+        </dxi-column>
+        <dxi-column dataField="asset_num" caption="asset_num" dataType="number">
+          <!-- <dxo-lookup
+          [dataSource]="shippersData"
+          valueExpr="Value"
+          displayExpr="Text"
+        ></dxo-lookup> -->
+        </dxi-column>
+
+        <dxi-column dataField="n_of_ac">
+
+        </dxi-column>
+        <dxi-column dataField="n_of_ne">
+
+        </dxi-column>
+        <dxi-column dataField="battery_age">
+
+        </dxi-column>
+        <dxi-column dataField="n_of_partial_charge">
+
+        </dxi-column>
+        <dxi-column dataField="n_of_generator">
+
+        </dxi-column>
+        <dxi-column dataField="n_of_air_con">
+
+        </dxi-column>
+        <dxi-column dataField="max_ac_duration">
+
+        </dxi-column>
+        <dxi-column dataField="mx_afad">
+
+        </dxi-column>
+        <dxi-column dataField="totalpower_loc">
+
+        </dxi-column>
+        <dxi-column dataField="ideal_working_hour">
+
+        </dxi-column>
+        <dxi-column dataField="back_sites">
+
+        </dxi-column>
+        <dxi-column dataField="technology">
+
+        </dxi-column>
+        <dxi-column dataField="remaining_battery_lifetime">
+
+        </dxi-column>
+        <dxi-column dataField="remaining_battery_lifetime_cast_int">
+
+        </dxi-column>
+        <dxi-column dataField="recommendation">
+
+        </dxi-column>
+        <dxi-column dataField="additional_info">
+
+        </dxi-column>
+        <dxi-column dataField="current_date" dataType="date">
+
+        </dxi-column>
+        <dxi-column dataField="RegionsId" caption="region_id">
+
+        </dxi-column>
+        <dxi-column dataField="CitiesId" caption="city_id">
+
+        </dxi-column>
+
+        <!-- <div *dxTemplate="let order of 'detail'">
+        <detail-grid [key]="order.key"></detail-grid>
+      </div> -->
+<!--
+        <dxo-summary>
+          <dxi-total-item column="Freight" summaryType="sum">
+            <dxo-value-format type="decimal" [precision]="2"></dxo-value-format>
+          </dxi-total-item>
+          <dxi-group-item column="Freight" summaryType="sum">
+            <dxo-value-format type="decimal" [precision]="2"></dxo-value-format>
+          </dxi-group-item>
+          <dxi-group-item summaryType="count"> </dxi-group-item>
+        </dxo-summary> -->
+
+      </dx-data-grid>
+
+
+    </div>
   </div>
 </div>
-
-
-
