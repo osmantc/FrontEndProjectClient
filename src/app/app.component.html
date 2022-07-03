@@ -30,9 +30,14 @@
         </dxi-validation-rule>
         </dxi-column> -->
         <dxi-column dataField="location">
-          <dxi-validation-rule type="stringLength" [max]="25" message="Bölge Adi Maximum 25 karater">
+          <dxi-validation-rule type="stringLength" [max]="25" message="location maximum 25 karater">
           </dxi-validation-rule>
         </dxi-column>
+
+        <dxi-column dataField="regionsName" caption="region_name">
+
+        </dxi-column>
+
         <!-- <dxi-column dataField="asset_num" caption="asset_num" dataType="number">
           <dxo-lookup
           [dataSource]="shippersData"
@@ -41,7 +46,10 @@
         ></dxo-lookup>
         </dxi-column> -->
 
-        <dxi-column dataField="CitiesId" caption="city_id">
+        <!-- <dxi-column dataField="citiesId" caption="city_id">
+
+        </dxi-column> -->
+        <dxi-column dataField="citiesName" caption="city_name">
 
         </dxi-column>
 
@@ -50,7 +58,7 @@
         </dxi-column>
 
         <dxi-column dataField="id" caption="id">
-          <dxi-validation-rule type="stringLength" [max]="20" message="Id Maximum 25 karater"></dxi-validation-rule>
+          <dxi-validation-rule type="stringLength" [max]="20" message="id maximum 25 karater"></dxi-validation-rule>
         </dxi-column>
 
         <dxi-column dataField="remaining_battery_lifetime">
