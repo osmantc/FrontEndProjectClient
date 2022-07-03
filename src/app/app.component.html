@@ -11,45 +11,57 @@
         </dxo-editing>
         <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
         <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
-        <dxi-column dataField="id" caption="id">
-          <!-- <dxi-validation-rule
-          type="stringLength"
-          [max]="15"
-          message="The field id must be a string with a maximum length of 15."
-        ></dxi-validation-rule> -->
-        </dxi-column>
-        <dxi-column dataField="tenant_id" dataType="number">
-          <!-- <dxi-validation-rule
+
+
+        <!-- <dxi-column dataField="tenant_id" dataType="number">
+          <dxi-validation-rule
           type="required"
           message="The OrderDate field is required."
-        ></dxi-validation-rule> -->
-        </dxi-column>
-        <dxi-column dataField="report_file_process_id">
+        ></dxi-validation-rule>
+        </dxi-column> -->
+        <!-- <dxi-column dataField="report_file_process_id">
           <dxo-header-filter groupInterval="100"></dxo-header-filter>
-          <!-- <dxi-validation-rule
+          <dxi-validation-rule
           type="range"
           [min]="0"
           [max]="2000"
           message="The field Freight must be between 0 and 2000."
         >
-        </dxi-validation-rule> -->
-        </dxi-column>
+        </dxi-validation-rule>
+        </dxi-column> -->
         <dxi-column dataField="location">
-          <!-- <dxi-validation-rule
-          type="stringLength"
-          max="15"
-          message="The field ShipCountry must be a string with a maximum length of 15."
-        ></dxi-validation-rule> -->
+          <dxi-validation-rule type="stringLength" [max]="25" message="Bölge Adi Maximum 25 karater">
+          </dxi-validation-rule>
         </dxi-column>
-        <dxi-column dataField="asset_num" caption="asset_num" dataType="number">
-          <!-- <dxo-lookup
+        <!-- <dxi-column dataField="asset_num" caption="asset_num" dataType="number">
+          <dxo-lookup
           [dataSource]="shippersData"
           valueExpr="Value"
           displayExpr="Text"
-        ></dxo-lookup> -->
+        ></dxo-lookup>
+        </dxi-column> -->
+
+        <dxi-column dataField="CitiesId" caption="city_id">
+
         </dxi-column>
 
-        <dxi-column dataField="n_of_ac">
+        <dxi-column dataField="current_date" dataType="date">
+
+        </dxi-column>
+
+        <dxi-column dataField="id" caption="id">
+          <dxi-validation-rule type="stringLength" [max]="20" message="Id Maximum 25 karater"></dxi-validation-rule>
+        </dxi-column>
+
+        <dxi-column dataField="remaining_battery_lifetime">
+
+        </dxi-column>
+
+        <dxi-column dataField="recommendation">
+
+        </dxi-column>
+
+        <!-- <dxi-column dataField="n_of_ac">
 
         </dxi-column>
         <dxi-column dataField="n_of_ne">
@@ -85,32 +97,24 @@
         <dxi-column dataField="technology">
 
         </dxi-column>
-        <dxi-column dataField="remaining_battery_lifetime">
 
-        </dxi-column>
         <dxi-column dataField="remaining_battery_lifetime_cast_int">
 
         </dxi-column>
-        <dxi-column dataField="recommendation">
 
-        </dxi-column>
         <dxi-column dataField="additional_info">
 
-        </dxi-column>
-        <dxi-column dataField="current_date" dataType="date">
+        </dxi-column> -->
 
-        </dxi-column>
-        <dxi-column dataField="RegionsId" caption="region_id">
+        <!-- <dxi-column dataField="RegionsId" caption="region_id">
 
-        </dxi-column>
-        <dxi-column dataField="CitiesId" caption="city_id">
+        </dxi-column> -->
 
-        </dxi-column>
 
         <!-- <div *dxTemplate="let order of 'detail'">
         <detail-grid [key]="order.key"></detail-grid>
       </div> -->
-<!--
+        <!--
         <dxo-summary>
           <dxi-total-item column="Freight" summaryType="sum">
             <dxo-value-format type="decimal" [precision]="2"></dxo-value-format>

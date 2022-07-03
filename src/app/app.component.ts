@@ -24,12 +24,12 @@ export class AppComponent {
     this.dataSource = AspNetData.createStore({
       key: 'id',
       loadUrl: `${this.url}/MobilAkus`,
-      insertUrl: `${this.url}/InsertMobilAkus`,
-      updateUrl: `${this.url}/UpdateMobilAkus`,
-      deleteUrl: `${this.url}/DeleteMobilAkus`,
+      insertUrl: `${this.url}/InsertMobilAku`,
+      updateUrl: `${this.url}/UpdateMobilAku`,
+      deleteUrl: `${this.url}/DeleteMobilAku`,
       onBeforeSend(method, ajaxOptions) {
         ajaxOptions.xhrFields = { withCredentials: true };
-        ajaxOptions.contentType="application/json";
+        // ajaxOptions.contentType="application/json";
       },
     });
 
