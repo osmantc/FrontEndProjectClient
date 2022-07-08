@@ -1,0 +1,120 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <dx-data-grid id="gridContainer" [dataSource]="dataSource" [remoteOperations]="true" [height]="600" [showBorders]="true">
+
+        <dxo-scrolling mode="virtual" rowRenderingMode="virtual"></dxo-scrolling>
+
+        <dxo-paging [pageSize]="20"></dxo-paging>
+
+        <dxo-pager [visible]="true" [allowedPageSizes]="allowedPageSizes" [displayMode]="displayMode"
+          [showPageSizeSelector]="showPageSizeSelector" [showInfo]="showInfo" [showNavigationButtons]="showNavButtons">
+        </dxo-pager>
+
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+        <dxo-sorting mode="multiple"></dxo-sorting>
+
+        <dxo-header-filter [visible]="true" [allowSearch]="true"></dxo-header-filter>
+
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+
+        <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
+
+        <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
+          <dxo-popup title="Mobil Aku Bilgisi" [showTitle]="true" [width]="700" [height]="525">
+          </dxo-popup>
+          <dxo-form>
+            <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
+              <dxi-item dataField="id"></dxi-item>
+              <dxi-item dataField="tenant_id"></dxi-item>
+              <dxi-item dataField="report_file_process_id"></dxi-item>
+              <dxi-item dataField="location"></dxi-item>
+              <dxi-item dataField="asset_num"></dxi-item>
+              <dxi-item dataField="n_of_ac"></dxi-item>
+              <dxi-item dataField="n_of_ne"></dxi-item>
+              <dxi-item dataField="battery_age"></dxi-item>
+              <dxi-item dataField="n_of_partial_charge"></dxi-item>
+              <dxi-item dataField="n_of_generator"></dxi-item>
+              <dxi-item dataField="n_of_air_con"></dxi-item>
+              <dxi-item dataField="max_ac_duration"></dxi-item>
+              <dxi-item dataField="mx_afad"></dxi-item>
+              <dxi-item dataField="totalpower_loc"></dxi-item>
+              <dxi-item dataField="ideal_working_hour"></dxi-item>
+              <dxi-item dataField="back_sites"></dxi-item>
+              <dxi-item dataField="technology"></dxi-item>
+              <dxi-item dataField="remaining_battery_lifetime"></dxi-item>
+              <dxi-item dataField="remaining_battery_lifetime_cast_int"></dxi-item>
+              <dxi-item dataField="recommendation"></dxi-item>
+              <dxi-item dataField="additional_info"></dxi-item>
+              <dxi-item dataField="current_date" dataType="date"></dxi-item>
+              <dxi-item dataField="regionsId"></dxi-item>
+              <dxi-item dataField="citiesId"></dxi-item>
+            </dxi-item>
+
+          </dxo-form>
+        </dxo-editing>
+
+
+        <dxi-column dataField="id"></dxi-column> <!-- açık -->
+        <dxi-column dataField="tenant_id" [visible]="false"></dxi-column>
+        <dxi-column dataField="report_file_process_id" [visible]="false"></dxi-column>
+        <dxi-column dataField="location"></dxi-column> <!-- açık -->
+        <dxi-column dataField="asset_num" [visible]="false"></dxi-column>
+        <dxi-column dataField="n_of_ac" [visible]="false"></dxi-column>
+        <dxi-column dataField="n_of_ne" [visible]="false"></dxi-column>
+        <dxi-column dataField="battery_age" [visible]="false"></dxi-column>
+        <dxi-column dataField="n_of_partial_charge" [visible]="false"></dxi-column>
+        <dxi-column dataField="n_of_generator" [visible]="false"></dxi-column>
+        <dxi-column dataField="n_of_air_con" [visible]="false"></dxi-column>
+        <dxi-column dataField="max_ac_duration" [visible]="false"></dxi-column>
+        <dxi-column dataField="mx_afad" [visible]="false"></dxi-column>
+        <dxi-column dataField="totalpower_loc" [visible]="false"></dxi-column>
+        <dxi-column dataField="ideal_working_hour" [visible]="false"></dxi-column>
+        <dxi-column dataField="back_sites" [visible]="false"></dxi-column>
+        <dxi-column dataField="technology" [visible]="false"></dxi-column>
+        <dxi-column dataField="remaining_battery_lifetime"></dxi-column> <!-- açık -->
+        <dxi-column dataField="remaining_battery_lifetime_cast_int" [visible]="false"></dxi-column>
+        <dxi-column dataField="recommendation"></dxi-column> <!-- açık -->
+        <dxi-column dataField="additional_info" [visible]="false"></dxi-column>
+        <dxi-column dataField="current_date" dataType="date"></dxi-column> <!-- açık -->
+        <dxi-column dataField="regionsId" [visible]="false"></dxi-column>
+        <dxi-column dataField="citiesId" [visible]="false"></dxi-column>
+        <dxi-column dataField="regionsName" caption="region_name"></dxi-column> <!-- açık -->
+        <dxi-column dataField="citiesName" caption="city_name"></dxi-column> <!-- açık -->
+
+        <!-- <div *dxTemplate="let order of 'detail'">
+        <detail-grid [key]="order.key"></detail-grid>
+      </div> -->
+        <!--
+        <dxo-summary>
+          <dxi-total-item column="Freight" summaryType="sum">
+            <dxo-value-format type="decimal" [precision]="2"></dxo-value-format>
+          </dxi-total-item>
+          <dxi-group-item column="Freight" summaryType="sum">
+            <dxo-value-format type="decimal" [precision]="2"></dxo-value-format>
+          </dxi-group-item>
+          <dxi-group-item summaryType="count"> </dxi-group-item>
+        </dxo-summary> -->
+
+      </dx-data-grid>
+
+
+      <div class="options">
+        <div class="caption">Options</div>
+        <div class="option-container">
+          <div class="option">
+            <dx-select-box id="displayModes" displayExpr="text" valueExpr="value" [items]="displayModes"
+              [(value)]="displayMode">
+            </dx-select-box>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
