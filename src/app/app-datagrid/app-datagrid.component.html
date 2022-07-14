@@ -2,7 +2,18 @@
   <div class="row">
     <div class="col">
 
-      <dx-data-grid id="gridContainer" [dataSource]="dataSource" [remoteOperations]="true" [height]="600" [showBorders]="true">
+      <dx-data-grid id="gridContainer" [dataSource]="dataSource" [remoteOperations]="true" [height]="600"
+        [showBorders]="true">
+
+        <!-- <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+        <dxo-header-filter [visible]="true" [allowSearch]="true"></dxo-header-filter> -->
+
+        <dxo-selection mode="single"></dxo-selection>
+
+        <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
+
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
 
         <dxo-scrolling mode="virtual" rowRenderingMode="virtual"></dxo-scrolling>
 
@@ -12,17 +23,7 @@
           [showPageSizeSelector]="showPageSizeSelector" [showInfo]="showInfo" [showNavigationButtons]="showNavButtons">
         </dxo-pager>
 
-        <dxo-filter-row [visible]="true"></dxo-filter-row>
-
         <dxo-sorting mode="multiple"></dxo-sorting>
-
-        <dxo-header-filter [visible]="true" [allowSearch]="true"></dxo-header-filter>
-
-        <dxo-group-panel [visible]="true"></dxo-group-panel>
-
-        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
-
-        <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
 
         <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
           <dxo-popup title="Mobil Aku Bilgisi" [showTitle]="true" [width]="700" [height]="525">

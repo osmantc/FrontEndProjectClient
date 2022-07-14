@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 import { DxDataGridComponent, DxDataGridModule, DxCheckBoxModule } from 'devextreme-angular';
+import CustomStore from 'devextreme/data/custom_store';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class AppDatagridComponent implements OnInit {
   dataGrid!: DxDataGridComponent;
 
   mobilAkuData: any;
-  dataSource: any;
+  dataSource: CustomStore;
   url: string;
 
   readonly allowedPageSizes = [20, 50, 100, 'all'];
