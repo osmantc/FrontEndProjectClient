@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 import { DxDataGridComponent, DxDataGridModule, DxCheckBoxModule } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
+import { Workbook } from 'exceljs';
+import { saveAs } from 'file-saver';
+import { exportDataGrid } from 'devextreme/excel_exporter';
 
 import { AppDetailGridComponent } from '../app-detail-grid/app-detail-grid.component';
 
@@ -61,5 +64,20 @@ export class AppDatagridComponent implements OnInit {
 
   }
 
+  onExporting(e: any) {
+    const workbook = new Workbook();
+    const worksheet = workbook.addWorksheet('Mobil Aku');
+
+    exportDataGrid({
+      component: e.component,
+      worksheet,
+      autoFilterEnabled: true,
+    }).then(() => {
+      workbook.xlsx.writeBuffer().then((buffer) => {
+        saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'MobilAkuListesi.xlsx');
+      });
+    });
+    e.cancel = true;
+  }
 
 }

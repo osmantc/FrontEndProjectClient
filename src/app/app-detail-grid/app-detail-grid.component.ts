@@ -27,12 +27,17 @@ export class AppDetailGridComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource = new DataSource({
-      store: new ArrayStore({
-        data: [this.service.getAkus(this.key).subscribe(x => x)],
-        key: 'id',
-      }),
-      filter: ['id', '=', this.key],
+
+    this.service.getAkus(this.key).subscribe(x => {
+
+      this.dataSource = new DataSource({
+        store: new ArrayStore({
+          data: [x],
+          key: 'id',
+        }),
+        filter: ['id', '=', this.key],
+      });
+
     });
   }
 

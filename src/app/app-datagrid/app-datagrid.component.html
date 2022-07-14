@@ -3,13 +3,14 @@
     <div class="col">
 
       <dx-data-grid id="gridContainer" [dataSource]="dataSource" [remoteOperations]="true" [height]="600"
-        [showBorders]="true">
+        [showBorders]="true" (onExporting)="onExporting($event)">
 
         <!-- <dxo-group-panel [visible]="true"></dxo-group-panel>
         <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
         <dxo-header-filter [visible]="true" [allowSearch]="true"></dxo-header-filter> -->
 
-        <dxo-selection mode="single"></dxo-selection>
+        <dxo-selection mode="multiple"></dxo-selection>
+        <dxo-export [enabled]="true" [allowExportSelectedData]="true"></dxo-export>
 
         <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
 
@@ -25,7 +26,7 @@
 
         <dxo-sorting mode="multiple"></dxo-sorting>
 
-        <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
+        <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="false" [allowDeleting]="true">
           <dxo-popup title="Mobil Aku Bilgisi" [showTitle]="true" [width]="700" [height]="525">
           </dxo-popup>
           <dxo-form>
@@ -59,7 +60,6 @@
           </dxo-form>
         </dxo-editing>
 
-
         <dxi-column dataField="id"></dxi-column> <!-- açık -->
         <dxi-column dataField="tenant_id" [visible]="false"></dxi-column>
         <dxi-column dataField="report_file_process_id" [visible]="false"></dxi-column>
@@ -89,7 +89,7 @@
 
         <div *dxTemplate="let aku of 'detail'">
           <div class="master-detail-caption">{{
-            aku.data.location + " " + aku.data.recommendation + "'s Tasks:"
+            aku.data.id + " " + "Numarali Mobil Akü Detayı"
             }}</div>
 
           <div *ngIf="aku.data.id">

@@ -1,10 +1,21 @@
-<dx-data-grid [dataSource]="dataSource" [showBorders]="true" [columnAutoWidth]="true">
-
+<dx-data-grid [dataSource]="dataSource" [showBorders]="true" [columnAutoWidth]="true" [height]="90">
+  <dxi-column dataField="tenant_id"></dxi-column>
+  <dxi-column dataField="report_file_process_id"></dxi-column>
+  <dxi-column dataField="asset_num"></dxi-column>
+  <dxi-column dataField="n_of_ac"></dxi-column>
+  <dxi-column dataField="n_of_ne"></dxi-column>
+  <dxi-column dataField="battery_age"></dxi-column>
+  <dxi-column dataField="n_of_partial_charge"></dxi-column>
+  <dxi-column dataField="n_of_generator"></dxi-column>
+  <dxi-column dataField="n_of_air_con"></dxi-column>
+  <dxi-column dataField="max_ac_duration"></dxi-column>
   <dxi-column dataField="mx_afad"></dxi-column>
   <dxi-column dataField="totalpower_loc"></dxi-column>
   <dxi-column dataField="ideal_working_hour"></dxi-column>
   <dxi-column dataField="back_sites"></dxi-column>
-
-  <dxi-column caption="Completed" dataType="boolean" [calculateCellValue]="completedValue"></dxi-column>
-
+  <dxi-column dataField="technology"></dxi-column>
+  <dxi-column dataField="remaining_battery_lifetime_cast_int"></dxi-column>
+  <dxi-column dataField="additional_info"></dxi-column>
+  <dxi-column dataField="regionsId"></dxi-column>
+  <dxi-column dataField="citiesId"></dxi-column>
 </dx-data-grid>
