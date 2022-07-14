@@ -3,6 +3,8 @@ import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 import { DxDataGridComponent, DxDataGridModule, DxCheckBoxModule } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
 
+import { AppDetailGridComponent } from '../app-detail-grid/app-detail-grid.component';
+
 
 @Component({
   selector: 'app-datagrid',
@@ -51,7 +53,6 @@ export class AppDatagridComponent implements OnInit {
         // ajaxOptions.contentType="application/json";
       },
     });
-
 
 
   }

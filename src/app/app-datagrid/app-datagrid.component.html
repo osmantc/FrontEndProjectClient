@@ -87,6 +87,17 @@
         <dxi-column dataField="regionsName" caption="region_name"></dxi-column> <!-- açık -->
         <dxi-column dataField="citiesName" caption="city_name"></dxi-column> <!-- açık -->
 
+        <div *dxTemplate="let aku of 'detail'">
+          <div class="master-detail-caption">{{
+            aku.data.location + " " + aku.data.recommendation + "'s Tasks:"
+            }}</div>
+
+          <div *ngIf="aku.data.id">
+            <app-detail-grid [key]="aku.data.id"></app-detail-grid>
+          </div>
+
+        </div>
+
         <!-- <div *dxTemplate="let order of 'detail'">
         <detail-grid [key]="order.key"></detail-grid>
       </div> -->

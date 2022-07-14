@@ -1,0 +1,10 @@
+<dx-data-grid [dataSource]="dataSource" [showBorders]="true" [columnAutoWidth]="true">
+
+  <dxi-column dataField="mx_afad"></dxi-column>
+  <dxi-column dataField="totalpower_loc"></dxi-column>
+  <dxi-column dataField="ideal_working_hour"></dxi-column>
+  <dxi-column dataField="back_sites"></dxi-column>
+
+  <dxi-column caption="Completed" dataType="boolean" [calculateCellValue]="completedValue"></dxi-column>
+
+</dx-data-grid>
