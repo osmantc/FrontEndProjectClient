@@ -1,11 +1,33 @@
-<dx-pivot-grid
-  [allowSorting]="true"
-  [allowSortingBySummary]="true"
-  [allowFiltering]="true"
-  [height]="620"
-  [showBorders]="true"
-  rowHeaderLayout="tree"
-  [dataSource]="dataSource"
->
-  <dxo-scrolling mode="virtual"></dxo-scrolling>
-</dx-pivot-grid>
+<div id="pivotgrid-demo">
+  <dx-chart id="sales-chart">
+    <dxo-common-series-settings type="bar"></dxo-common-series-settings>
+    <dxo-size [height]="200"></dxo-size>
+    <dxo-adaptive-layout [width]="450"></dxo-adaptive-layout>
+    <dxo-tooltip
+      [enabled]="true"
+      format="currency"
+      [customizeTooltip]="customizeTooltip"
+    ></dxo-tooltip>
+  </dx-chart>
+
+  <dx-pivot-grid
+    id="pivotgrid"
+    [allowSortingBySummary]="true"
+    [allowFiltering]="true"
+    [showBorders]="true"
+    [allowSorting]="true"
+    [showColumnGrandTotals]="false"
+    [showRowGrandTotals]="false"
+    [showRowTotals]="false"
+    [showColumnTotals]="false"
+    [dataSource]="dataSource"
+    [height]="650"
+    >
+    <dxo-field-chooser [enabled]="true" [height]="400"></dxo-field-chooser>
+    <dxo-scrolling mode="virtual"></dxo-scrolling>
+  </dx-pivot-grid>
+</div>
+
+
+
+

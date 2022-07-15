@@ -1,8 +1,8 @@
 import {
-  NgModule, Component, enableProdMode, ChangeDetectionStrategy,
+  NgModule, Component, enableProdMode, ChangeDetectionStrategy, ViewChild,
 } from '@angular/core';
 
-import { DxPivotGridModule } from 'devextreme-angular';
+import { DxPivotGridModule, DxPivotGridComponent, DxChartComponent } from 'devextreme-angular';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
 @Component({
@@ -12,6 +12,11 @@ import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 })
 export class AppPivotComponent {
 
+  @ViewChild(DxPivotGridComponent, { static: false }) pivotGrid!: DxPivotGridComponent;
+
+  @ViewChild(DxChartComponent, { static: false }) chart!: DxChartComponent;
+
+
   dataSource: any;
   url: string;
 
@@ -19,64 +24,63 @@ export class AppPivotComponent {
 
     this.url = "https://localhost:7127/api/MobilAku";
 
+    this.customizeTooltip = this.customizeTooltip.bind(this);
+
     this.dataSource = {
       remoteOperations: true,
       store: AspNetData.createStore({
-        key: 'OrderID',
+        key: 'id',
         loadUrl: `${this.url}/MobilAkus`,
       }),
       fields: [{
-        caption: 'Category',
-        dataField: 'ProductCategoryName',
+        caption: 'Regions',
+        dataField: 'regionsName',
         width: 250,
         expanded: true,
-        sortBySummaryField: 'SalesAmount',
+        sortBySummaryField: 'Total',
         sortBySummaryPath: [],
         sortOrder: 'desc',
         area: 'row',
       }, {
-        caption: 'Subcategory',
-        dataField: 'ProductSubcategoryName',
+        caption: 'Cities',
+        dataField: 'citiesName',
         width: 250,
-        sortBySummaryField: 'SalesAmount',
+        sortBySummaryField: 'Total',
         sortBySummaryPath: [],
         sortOrder: 'desc',
         area: 'row',
-      }, {
-        caption: 'Product',
-        dataField: 'ProductName',
-        area: 'row',
-        sortBySummaryField: 'SalesAmount',
-        sortBySummaryPath: [],
-        sortOrder: 'desc',
-        width: 250,
       }, {
         caption: 'Date',
-        dataField: 'DateKey',
+        dataField: 'current_date',
         dataType: 'date',
         area: 'column',
       }, {
-        caption: 'Amount',
-        dataField: 'SalesAmount',
-        summaryType: 'sum',
-        format: 'currency',
+        caption: 'Count',
+        summaryType: 'count',
         area: 'data',
-      }, {
-        caption: 'Store',
-        dataField: 'StoreName',
-      }, {
-        caption: 'Quantity',
-        dataField: 'SalesQuantity',
-        summaryType: 'sum',
-      }, {
-        caption: 'Unit Price',
-        dataField: 'UnitPrice',
-        format: 'currency',
-        summaryType: 'sum',
       }, {
         dataField: 'Id',
         visible: false,
       }],
+    };
+  }
+
+  ngAfterViewInit() {
+    this.pivotGrid.instance.bindChart(this.chart.instance, {
+      dataFieldsDisplayMode: 'splitPanes',
+      alternateDataFields: false,
+    });
+
+    // setTimeout(() => {
+    //   const dataSource = this.pivotGrid.instance.getDataSource();
+    //   dataSource.expandHeaderItem('row', ['North America']);
+    //   dataSource.expandHeaderItem('column', [2013]);
+    // }, 0);
+  }
+
+  customizeTooltip(args: any) {
+    return {
+      html: `${args.seriesName} | Total<div class='currency'>${args.valueText}</div>`,
     };
   }
 }

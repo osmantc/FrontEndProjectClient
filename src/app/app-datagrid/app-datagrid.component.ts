@@ -73,7 +73,7 @@ export class AppDatagridComponent implements OnInit {
       worksheet,
       autoFilterEnabled: true,
     }).then(() => {
-      workbook.xlsx.writeBuffer().then((buffer) => {
+      workbook.xlsx.writeBuffer().then((buffer:any) => {
         saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'MobilAkuListesi.xlsx');
       });
     });
