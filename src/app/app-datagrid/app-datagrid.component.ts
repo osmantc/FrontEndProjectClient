@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
-import { DxDataGridComponent, DxDataGridModule, DxCheckBoxModule } from 'devextreme-angular';
+import { DxDataGridComponent } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver';
@@ -73,7 +73,7 @@ export class AppDatagridComponent implements OnInit {
       worksheet,
       autoFilterEnabled: true,
     }).then(() => {
-      workbook.xlsx.writeBuffer().then((buffer:any) => {
+      workbook.xlsx.writeBuffer().then((buffer: any) => {
         saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'MobilAkuListesi.xlsx');
       });
     });

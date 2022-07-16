@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { DxChartModule, DxDataGridModule, DxMapModule, DxPivotGridModule, DxSelectBoxModule, DxTemplateModule } from 'devextreme-angular';
+import { DxButtonModule, DxChartModule, DxCheckBoxModule, DxDataGridModule, DxMapModule, DxPivotGridModule, DxSelectBoxModule, DxTemplateModule } from 'devextreme-angular';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { AppDatagridComponent } from './app-datagrid/app-datagrid.component';
 import { AppMiddlemainComponent } from './app-middlemain/app-middlemain.component';
@@ -14,6 +14,7 @@ import { AppDetailGridComponent } from './app-detail-grid/app-detail-grid.compon
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClientModule } from '@angular/common/http';
 import { AppPivotComponent } from './app-pivot/app-pivot.component';
+import { AppMapComponent } from './app-map/app-map.component';
 
 
 
@@ -27,6 +28,7 @@ import { AppPivotComponent } from './app-pivot/app-pivot.component';
     AppLefsideComponent,
     AppDetailGridComponent,
     AppPivotComponent,
+    AppMapComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,9 @@ import { AppPivotComponent } from './app-pivot/app-pivot.component';
     HttpClientModule,
     DxPivotGridModule,
     DxChartModule,
-    DxMapModule
+    DxMapModule,
+    DxCheckBoxModule,
+    DxButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,7 +2,7 @@ import {
   NgModule, Component, enableProdMode, ChangeDetectionStrategy, ViewChild,
 } from '@angular/core';
 
-import { DxPivotGridModule, DxPivotGridComponent, DxChartComponent } from 'devextreme-angular';
+import { DxPivotGridComponent, DxChartComponent } from 'devextreme-angular';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
 @Component({

@@ -1,40 +1,64 @@
-import { NgModule, Component } from '@angular/core';
-import { AkuServiceService } from '../services/aku-service.service';
-import { DxMapComponent } from 'devextreme-angular';
-import { DxMapModule } from 'devextreme-angular';
-
+import { makeBindingParser } from '@angular/compiler';
+import { NgModule, Component, OnInit } from '@angular/core';
+import { DxiMarkerComponent } from 'devextreme-angular/ui/nested';
+import { LocationServiceService, Marker, Tooltip } from '../services/location-service.service';
 
 
 @Component({
-  selector: 'demo-app',
-  providers: [AkuServiceService],
+  selector: 'app-map',
+  providers: [LocationServiceService],
   templateUrl: './app-map.component.html',
   styleUrls: ['./app-map.component.css']
 })
 
-export class AppMapComponent {
-  customMarkerUrl: string;
+export class AppMapComponent implements OnInit {
 
-  mapMarkerUrl: string;
+  customMarkerUrl!: string;
+  mapMarkerUrl!: string;
 
-  originalMarkers: Marker[];
+  originalMarkers!: Marker[];
+  markers!: Marker[];
 
-  markers: Marker[];
+  constructor(service: LocationServiceService) {
 
-  constructor(service: AkuServiceService) {
+    this.markers = [];
+    this.originalMarkers = [];
     this.customMarkerUrl = this.mapMarkerUrl = service.getMarkerUrl();
-    this.originalMarkers = this.markers = service.getMarkers();
+
+    service.getMarkers().subscribe(x => {
+
+      x.forEach(element => {
+
+        let location: string = element.location;
+        let tooltip: Tooltip = new Tooltip();
+        tooltip.isShown = element.tooltip.isShown;
+        tooltip.text = element.tooltip.text;
+
+        let marker: Marker = new Marker();
+        marker.location = location;
+        marker.tooltip = tooltip;
+
+        this.markers.push(marker);
+        this.originalMarkers.push(marker);
+      });
+
+    });
+
   }
 
-  checkCustomMarker(data) {
-    this.mapMarkerUrl = data.value ? this.customMarkerUrl : null;
+  ngOnInit(): void {
+
+  }
+
+  checkCustomMarker(data: any) {
+    this.mapMarkerUrl = data.value ? this.customMarkerUrl : '';
     this.markers = this.originalMarkers;
   }
 
   showTooltips() {
     this.markers = this.markers.map((item) => {
       const newItem = JSON.parse(JSON.stringify(item));
-      newItem.tooltip.isShown = true;
+      newItem.tooltip.isShown = !item.tooltip.isShown;
       return newItem;
     });
   }
