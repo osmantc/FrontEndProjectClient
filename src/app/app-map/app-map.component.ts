@@ -26,21 +26,21 @@ export class AppMapComponent implements OnInit {
     this.customMarkerUrl = this.mapMarkerUrl = service.getMarkerUrl();
 
     service.getMarkers().subscribe(x => {
+      this.markers = this.originalMarkers = x;
+      // x.forEach(element => {
 
-      x.forEach(element => {
+      //   let location: string = element.location;
+      //   let tooltip: Tooltip = new Tooltip();
+      //   tooltip.isShown = element.tooltip.isShown;
+      //   tooltip.text = element.tooltip.text;
 
-        let location: string = element.location;
-        let tooltip: Tooltip = new Tooltip();
-        tooltip.isShown = element.tooltip.isShown;
-        tooltip.text = element.tooltip.text;
+      //   let marker: Marker = new Marker();
+      //   marker.location = location;
+      //   marker.tooltip = tooltip;
 
-        let marker: Marker = new Marker();
-        marker.location = location;
-        marker.tooltip = tooltip;
-
-        this.markers.push(marker);
-        this.originalMarkers.push(marker);
-      });
+      //   this.markers.push(marker);
+      //   this.originalMarkers.push(marker);
+      // });
 
     });
 
